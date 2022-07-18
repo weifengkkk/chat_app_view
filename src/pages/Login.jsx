@@ -64,20 +64,20 @@ function Login() {
           <input
             type="text"
             name="username"
-            placeholder="input your name"
+            placeholder="请输入你的用户名"
             onChange={(e) => handleChange(e)}
           />
           <input
             type="password"
             name="password"
-            placeholder="input your password"
+            placeholder="请输入你的密码"
             onChange={(e) => handleChange(e)}
           />
           <button className="submit-btn" type="submit">
-            Login
+            登录
           </button>
           <span>
-            no Account? please register! <Link to="/register">Register</Link>
+            没有账号？可以注册一个！ <Link to="/register">注册</Link>
           </span>
         </form>
       </FormContainer>
@@ -107,7 +107,7 @@ const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: pink;
+    background-color: #ffffff6d;
     border: 0.1rem solid black;
     border-radius: 2rem;
     padding: 3rem 5rem;
@@ -121,12 +121,12 @@ const FormContainer = styled.div`
       border-radius: 1rem;
     }
     .submit-btn {
-      background-color: pink;
+      background-color: #ffffff6d;
       color: grey;
-      width: 10vw;
+      width: 20vw;
       height: 5vh;
       padding: 1rem, 2rem;
-      margin-left: 3rem;
+      margin-left: 5rem;
       border: none;
       font-weight: bold;
       cursor: pointer;

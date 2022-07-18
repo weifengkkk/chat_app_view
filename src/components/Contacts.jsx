@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Logo from "../assets/logo.png";
 
-export default function Contacts({ contacts, currentUser, changeChat }) {
+export default function Contacts({
+  contacts,
+  currentUser,
+  changeChat,
+  setShowContacts,
+}) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
   const [currentSeleted, setCurrentSeleted] = useState(undefined);
@@ -15,6 +20,7 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
   const changeCurrentChat = (contact, index) => {
     setCurrentSeleted(index);
     changeChat(contact);
+    setShowContacts(false);
   };
   return (
     <>
@@ -65,16 +71,18 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
   );
 }
 const Container = styled.div`
-  display: grid;
-  grid-template-rows: 10% 75% 15%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   overflow: hidden;
   .brand {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    margin: 2rem;
+    gap: 2rem;
     img {
-      height: 2rem;
+      height: 4rem;
     }
     h3 {
       color: black;
@@ -125,6 +133,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 2rem;
     gap: 2rem;
     .avatar {
       img {

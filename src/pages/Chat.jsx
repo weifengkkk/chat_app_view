@@ -16,6 +16,10 @@ function Chat() {
   const [currentUser, setCurrentUser] = useState(undefined);
   const [currentChat, setCurrentChat] = useState(undefined);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showContacts, setShowContacts] = useState(true);
+  const changeWindow = (flag) => {
+    setShowContacts(flag);
+  };
   const getUser = async () => {
     const user = localStorage.getItem("chat-app-user");
     if (user) {
@@ -56,13 +60,16 @@ function Chat() {
     <>
       <Container>
         <div className="container">
-          <Contacts
-            contacts={contacts}
-            currentUser={currentUser}
-            changeChat={handleChatChange}
-          ></Contacts>
-          {isLoaded && currentChat ? (
+          {showContacts ? (
+            <Contacts
+              setShowContacts={changeWindow}
+              contacts={contacts}
+              currentUser={currentUser}
+              changeChat={handleChatChange}
+            ></Contacts>
+          ) : isLoaded && currentChat ? (
             <ChatContainer
+              closeWindow={changeWindow}
               socket={socket}
               currentChat={currentChat}
             ></ChatContainer>
@@ -84,13 +91,12 @@ const Container = styled.div`
   align-items: center;
   background-image: url(${bg_image});
   .container {
-    height: 85vh;
-    width: 85vw;
-    display: grid;
-    grid-template-columns: 25% 75%;
-    @media screen and (min-width: 720px) and (max-width: 1080px) {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    /* @media screen and (min-width: 720px) and (max-width: 1080px) {
       grid-template-columns: 35% 65%;
-    }
+    } */
   }
 `;
 

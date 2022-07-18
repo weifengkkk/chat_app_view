@@ -27,12 +27,9 @@ function Register() {
         password,
       });
       if (data.status === false) {
-        toast.error("this username have used!", toastOption);
+        toast.error("该用户名已经被注册过啦!", toastOption);
       } else {
-        toast.success(
-          `congradualtion ${data.user.name} you have created a new account!`,
-          toastOption
-        );
+        toast.success(`恭喜你 ${data.user.name} 您已经注册成功!`, toastOption);
         localStorage.setItem("chat-app-user", JSON.stringify(data.user));
         navigate("/");
       }
@@ -50,13 +47,13 @@ function Register() {
     const { password, confirmpassword } = values;
     if (password !== confirmpassword) {
       toast.error(
-        "password and confirmpassword should be same, plase input again!",
+        "密码和确认密码应该相同，请重新输入!",
 
         toastOption
       );
       return false;
     } else if (password.length < 3 || password.length > 20) {
-      toast.error("password length < 3 or password length > 8", toastOption);
+      toast.error("密码的长度不得小于3大于20", toastOption);
     } else {
       return true;
     }
@@ -72,26 +69,26 @@ function Register() {
           <input
             type="text"
             name="username"
-            placeholder="input your name"
+            placeholder="请输入你的用户名"
             onChange={(e) => handleChange(e)}
           />
           <input
             type="password"
             name="password"
-            placeholder="input your password"
+            placeholder="请输入你的密码"
             onChange={(e) => handleChange(e)}
           />
           <input
             type="password"
             name="confirmpassword"
-            placeholder="confirm your password"
+            placeholder="确认你的密码"
             onChange={(e) => handleChange(e)}
           />
           <button className="submit-btn" type="submit">
-            Register
+            注册
           </button>
           <span>
-            Already have another account? <Link to="/login">Login</Link>
+            已经有帐号了? <Link to="/login">登录</Link>
           </span>
         </form>
       </FormContainer>
@@ -122,7 +119,7 @@ const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: pink;
+    background-color: #ffffff6d;
     border: 0.1rem solid black;
     border-radius: 2rem;
     padding: 3rem 5rem;
@@ -136,12 +133,12 @@ const FormContainer = styled.div`
       border-radius: 1rem;
     }
     .submit-btn {
-      background-color: pink;
+      background-color: #ffffff6d;
       color: grey;
-      width: 10vw;
+      width: 20vw;
       height: 5vh;
       padding: 1rem, 2rem;
-      margin-left: 3rem;
+      margin-left: 5rem;
       border: none;
       font-weight: bold;
       cursor: pointer;

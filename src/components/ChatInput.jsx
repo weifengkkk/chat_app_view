@@ -38,7 +38,6 @@ export default function ChatInput({ handleSendMsg }) {
         <form className="input-container" onSubmit={sendChat}>
           <input
             type="text"
-            placeholder="input message here"
             onChange={(e) => setMsg(e.target.value)}
             onClick={() => {
               setShowImojiPicker(false);

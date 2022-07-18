@@ -4,9 +4,10 @@ import ChatInput from "./ChatInput";
 import { v4 as uuidv4 } from "uuid";
 import Logout from "./Logout";
 import axios from "axios";
+import { IoChevronBackOutline } from "react-icons/io5";
 import { sendMessageRoute, receiveMessageRoute } from "../api/ApiRoutes";
 import Messages from "./Messages";
-export default function ChatContainer({ currentChat, socket }) {
+export default function ChatContainer({ currentChat, socket, closeWindow }) {
   const [messages, setMessages] = useState([]);
   const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
@@ -73,6 +74,14 @@ export default function ChatContainer({ currentChat, socket }) {
   return (
     <Container>
       <div className="chat-header">
+        <div
+          className="back"
+          onClick={() => {
+            closeWindow(true);
+          }}
+        >
+          <IoChevronBackOutline></IoChevronBackOutline>
+        </div>
         <div className="user-details">
           <div className="avatar">
             <img
@@ -122,6 +131,11 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
+    .back {
+      svg {
+        font-size: 1.8rem;
+      }
+    }
     .user-details {
       display: flex;
       align-items: center;
